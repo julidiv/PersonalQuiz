@@ -12,18 +12,21 @@ class ResultViewController: UIViewController {
     @IBOutlet var resultAnswerLabel: UILabel!
     
     @IBOutlet var resultDescriprionLabel: UILabel!
- 
-    var responses: [Answer] = []
-   
+    
+     var answersChosen: [Answer]!
+
+     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         calculateTypesResult()
         navigationItem.hidesBackButton = true
 
     }
     func calculateTypesResult() {
         var showAnswers: [Animal: Int] = [:]
-        let showTypes = responses.map { $0.animal }
+        
+        let showTypes = answersChosen.map { $0.animal }
         
         for response in showTypes {
             showAnswers[response] = (showAnswers[response] ?? 0) + 1
@@ -34,8 +37,10 @@ class ResultViewController: UIViewController {
             return pairOne.value > pairTwo.value
         })
         
+       
         let oftenShowAnimal = sortedAnswer.first!.key
         
+       
         resultAnswerLabel.text = "Вы - \(oftenShowAnimal.rawValue)!"
         resultDescriprionLabel.text = oftenShowAnimal.definition
         
