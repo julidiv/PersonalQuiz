@@ -23,17 +23,18 @@ class ResultViewController: UIViewController {
     }
     func calculateTypesResult() {
         var showAnswers: [Animal: Int] = [:]
-        let showTypes = responses.map { $0.animal }
+        let showTypes = responses.map{ $0.animal }
         
         for response in showTypes {
             showAnswers[response] = (showAnswers[response] ?? 0) + 1
         }
+        
         let sortedAnswer = showAnswers.sorted(by:
-        {(pair1, pair2) -> Bool in
-            return pair1.value > pair2.value
+        {(pairOne, pairTwo) -> Bool in
+            return pairOne.value > pairTwo.value
         })
         
-        let oftenShowAnimal = sortedAnswer .first!.key
+        let oftenShowAnimal = sortedAnswer.first!.key
         
         resultAnswerLabel.text = "Вы - \(oftenShowAnimal.rawValue)!"
         resultDescriprionLabel.text = oftenShowAnimal.definition
