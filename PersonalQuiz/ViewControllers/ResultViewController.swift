@@ -12,8 +12,8 @@ class ResultViewController: UIViewController {
     @IBOutlet var resultAnswerLabel: UILabel!
     
     @IBOutlet var resultDescriprionLabel: UILabel!
-    
-    var responses: [Answer]!
+ 
+    var responses: [Answer] = []
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class ResultViewController: UIViewController {
     }
     func calculateTypesResult() {
         var showAnswers: [Animal: Int] = [:]
-        let showTypes = responses.map{ $0.animal }
+        let showTypes = responses.map { $0.animal }
         
         for response in showTypes {
             showAnswers[response] = (showAnswers[response] ?? 0) + 1
